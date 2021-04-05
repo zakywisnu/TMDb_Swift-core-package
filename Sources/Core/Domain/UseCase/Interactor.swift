@@ -10,6 +10,7 @@ import Foundation
 
 public struct Interactor<Request, Response, R: Repository>: UseCase
 where R.Request == Request, R.Response == Response {
+    
     private let _repository: R
     
     public init(repository: R) {
