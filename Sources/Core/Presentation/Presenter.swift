@@ -13,19 +13,21 @@ public class Presenter<Request, Response, Interactor: UseCase>: ObservableObject
     private var cancellables: Set<AnyCancellable> = []
     
     private let _useCase: Interactor
+    private let _request: Request
     
     @Published public var item: Response?
     @Published public var errorMessage: String = ""
     @Published public var isLoading: Bool = false
     @Published public var isError: Bool = false
     
-    public init(useCase: Interactor) {
+    public init(useCase: Interactor, request: Request) {
         _useCase = useCase
+        _request = request
     }
     
-    public func execute(request: Request?) {
+    public func execute() {
         isLoading = true
-        _useCase.execute(request: request)
+        _useCase.execute(request: _request)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
