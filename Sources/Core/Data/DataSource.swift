@@ -13,3 +13,7 @@ public protocol DataSource {
     
     func execute(request: Request?) -> AnyPublisher<Response, Error>
 }
+
+public struct API {
+    public static let baseUrl = "https://api.themoviedb.org/"
+}
