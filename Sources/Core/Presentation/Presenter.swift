@@ -15,7 +15,7 @@ public class Presenter<Request, Response, Interactor: UseCase>: ObservableObject
     private let _useCase: Interactor
     private let _request: Request
     
-    @Published public var item: Response?
+    @Published public var item: Response
     @Published public var errorMessage: String = ""
     @Published public var isLoading: Bool = false
     @Published public var isError: Bool = false
