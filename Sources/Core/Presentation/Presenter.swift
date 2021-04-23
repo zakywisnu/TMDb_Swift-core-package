@@ -15,14 +15,15 @@ public class Presenter<Request, Response, Interactor: UseCase>: ObservableObject
     private let _useCase: Interactor
     private let _request: Request
     
-    @Published public var item: Response
+    @Published public var item: Response?
     @Published public var errorMessage: String = ""
     @Published public var isLoading: Bool = false
     @Published public var isError: Bool = false
     
-    public init(useCase: Interactor, request: Request) {
+    public init(useCase: Interactor, request: Request, response: Response? = nil) {
         _useCase = useCase
         _request = request
+        item = response
     }
     
     public func execute() {
